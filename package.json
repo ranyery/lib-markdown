@@ -1,0 +1,24 @@
+{
+  "name": "lib-markdown",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ranyery/lib-markdown.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ranyery/lib-markdown/issues"
+  },
+  "homepage": "https://github.com/ranyery/lib-markdown#readme",
+  "dependencies": {
+    "chalk": "^5.0.1"
+  }
+}
