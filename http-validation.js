@@ -2,15 +2,23 @@
 
 import fetch from "node-fetch";
 
-async function checkStatusCode(arrayURLs) {
-  const arrayStatus = await Promise.all(
-    arrayURLs.map(async (url) => {
-      const response = await fetch(url);
-      return response.status;
-    })
-  );
+function handleError(err) {
+  throw new Error(err.message);
+}
 
-  return arrayStatus;
+async function checkStatusCode(arrayURLs) {
+  try {
+    const arrayStatus = await Promise.all(
+      arrayURLs.map(async (url) => {
+        const response = await fetch(url);
+        return response.status;
+      })
+    );
+
+    return arrayStatus;
+  } catch (e) {
+    handleError(e);
+  }
 }
 
 function getURLsFromArray(arrayLinks) {
@@ -20,5 +28,11 @@ function getURLsFromArray(arrayLinks) {
 export async function validateUrls(arrayLinks) {
   const links = getURLsFromArray(arrayLinks);
   const statusLinks = await checkStatusCode(links);
-  return statusLinks;
+
+  const results = arrayLinks.map((object, index) => {
+    const result = { ...object, status: statusLinks?.[index] };
+    return result;
+  });
+
+  return results;
 }
