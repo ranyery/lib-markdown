@@ -21,7 +21,7 @@ function extractLinks(content) {
     const occurrence = { [temp[1]]: temp[2] };
     extractedLinks.push(occurrence);
   }
-  return extractedLinks.length === 0 ? "Não há links" : extractedLinks;
+  return extractedLinks.length === 0 ? "There are no links" : extractedLinks;
 }
 
 function handleError(err) {

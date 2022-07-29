@@ -12,7 +12,6 @@ async function processText(filePath) {
     console.log(chalk.yellow("Links validados:"), await validateUrls(result));
     return;
   }
-
   console.log(chalk.yellow("Lista de links:"), result);
 }
 
