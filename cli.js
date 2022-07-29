@@ -9,7 +9,7 @@ const path = process.argv;
 async function processText(filePath) {
   const result = await getFile(filePath[2]);
   if (path[3] && path[3].toLowerCase() === "validar") {
-    console.log(chalk.yellow("Links validados:"), validateUrls(result));
+    console.log(chalk.yellow("Links validados:"), await validateUrls(result));
     return;
   }
 
