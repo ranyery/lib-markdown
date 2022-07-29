@@ -3,7 +3,7 @@
 import chalk from "chalk";
 import { promises } from "fs";
 
-async function getFile(filePath) {
+export async function getFile(filePath) {
   const encoding = "utf8";
   try {
     const content = await promises.readFile(filePath, encoding);
@@ -28,4 +28,4 @@ function handleError(err) {
   throw new Error(chalk.red(err));
 }
 
-getFile("./files/texto1.md");
+// getFile("./files/texto1.md");
