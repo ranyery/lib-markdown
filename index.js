@@ -7,7 +7,7 @@ export async function getFile(filePath) {
   const encoding = "utf8";
   try {
     const content = await promises.readFile(filePath, encoding);
-    console.log(extractLinks(content));
+    return extractLinks(content);
   } catch (e) {
     handleError(e);
   }
@@ -21,11 +21,9 @@ function extractLinks(content) {
     const occurrence = { [temp[1]]: temp[2] };
     extractedLinks.push(occurrence);
   }
-  return extractedLinks;
+  return extractedLinks.length === 0 ? "Não há links" : extractedLinks;
 }
 
 function handleError(err) {
   throw new Error(chalk.red(err));
 }
-
-// getFile("./files/texto1.md");

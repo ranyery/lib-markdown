@@ -1,7 +1,14 @@
+import chalk from "chalk";
 import { getFile } from "./index.js";
 
 const path = process.argv;
 
-console.log(getFile(path[2]));
+async function processText(filePath) {
+  const result = await getFile(filePath[2]);
+  console.log(chalk.yellow("Lista de links:"), result);
+}
 
-// How to execute: node cli.js ./files/texto1.md
+processText(path);
+
+// How to execute:
+// node cli.js ./files/texto1.md OR npm run cli
